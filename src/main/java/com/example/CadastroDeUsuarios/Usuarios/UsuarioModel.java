@@ -1,8 +1,9 @@
-package com.example.CadastroDeUsuarios;
+package com.example.CadastroDeUsuarios.Usuarios;
 
+import com.example.CadastroDeUsuarios.Tarefas.TarefasModel;
 import jakarta.persistence.*;
 
-import java.util.Scanner;
+import java.util.List;
 
 // Entity ele transforma uma classe em uma entidade do banco de dados
 @Entity
@@ -15,6 +16,12 @@ public class UsuarioModel {
     private String nome;
     private String email;
     private String senha;
+
+    // @ManyToOne um usuario tem uma unica tarefa
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") // foreing key ou chave estrangeira
+    private TarefasModel tarefas;
+
 
     public UsuarioModel(){
 
