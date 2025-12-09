@@ -1,16 +1,21 @@
 package com.example.CadastroDeUsuarios.Usuarios;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
-    @GetMapping("/boasvindas")
-    public String boasVindas(){
-        return "Essa é a minha primeira mensagem nessa rota";
-    }
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
+    @GetMapping
+    public List<UsuarioModel> listarUsuarios(){
+        return usuarioRepository.findAll();
+    }
 }

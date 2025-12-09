@@ -2,12 +2,20 @@ package com.example.CadastroDeUsuarios.Tarefas;
 
 import com.example.CadastroDeUsuarios.Usuarios.UsuarioModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 
 @Entity
 @Table (name = "tb_tarefas")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class TarefasModel {
 
     @Id
@@ -17,40 +25,8 @@ public class TarefasModel {
     private String dificuldade;
 
     // Uma tarefa pode ter varios usuarios
-    @OneToMany(mappedBy = "tarefas")
+    @OneToMany(mappedBy = "tarefa")
 
     private List<UsuarioModel> usuarios;
 
-    public TarefasModel(){
-
-    }
-
-    public TarefasModel(String nome, String dificuldade) {
-        this.nome = nome;
-        this.dificuldade = dificuldade;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDificuldade() {
-        return dificuldade;
-    }
-
-    public void setDificuldade(String dificuldade) {
-        this.dificuldade = dificuldade;
-    }
-
-    public UsuarioModel getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(UsuarioModel usuario) {
-        this.usuario = usuario;
-    }
 }
