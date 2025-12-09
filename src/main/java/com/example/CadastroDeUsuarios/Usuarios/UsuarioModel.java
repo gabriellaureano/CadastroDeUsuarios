@@ -2,20 +2,17 @@ package com.example.CadastroDeUsuarios.Usuarios;
 
 import com.example.CadastroDeUsuarios.Tarefas.TarefasModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
+
 // Entity ele transforma uma classe em uma entidade do banco de dados
+@Data
 @Entity
 @Table(name = "tb_cadastro")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class UsuarioModel {
 
     @Id
@@ -30,9 +27,27 @@ public class UsuarioModel {
     @JoinColumn(name = "tarefa_id") // foreing key ou chave estrangeira
     private TarefasModel tarefa;
 
+    public String getNome() {
+        return nome;
+    }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public String getSenha() {
+        return senha;
+    }
 
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }
