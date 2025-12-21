@@ -1,5 +1,9 @@
-package com.example.CadastroDeUsuarios.Usuarios;
+package com.example.CadastroDeUsuarios.usuarios;
 
+import com.example.CadastroDeUsuarios.usuarios.dto.UsuarioCreateDTO;
+import com.example.CadastroDeUsuarios.usuarios.dto.UsuarioResponseDTO;
+import com.example.CadastroDeUsuarios.usuarios.dto.UsuarioUpdateDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,22 +21,22 @@ public class UsuarioController {
     }
 
     @PostMapping // o @RequestBody pega os dados json enviados no post e transforma no usuarioModel
-    public UsuarioModel cadastrarUsuario(@RequestBody UsuarioModel usuario){
+    public UsuarioModel cadastrarUsuario(@Valid @RequestBody UsuarioCreateDTO usuario){
         return usuarioService.cadastrarUsuario(usuario);
     }
 
     @GetMapping
-    public List<UsuarioModel> listar(){
+    public List<UsuarioResponseDTO> buscarTodos(){
         return usuarioService.buscarTodos();
     }
 
     @GetMapping("/{id}") // @Pathvariable indica que o id sera o numero passado na url para prosseguir com o metodo
-    public UsuarioModel buscarPorId(@PathVariable Long id){
+    public UsuarioResponseDTO buscarPorId(@PathVariable Long id){
         return usuarioService.buscarPorId(id);
     }
 
     @PutMapping("/{id}")
-    public UsuarioModel atualizar(@PathVariable long id,@RequestBody UsuarioModel usuario){
+    public UsuarioUpdateDTO atualizar(@PathVariable long id, @RequestBody UsuarioUpdateDTO usuario){
         return usuarioService.atualizar(id,usuario);
     }
 

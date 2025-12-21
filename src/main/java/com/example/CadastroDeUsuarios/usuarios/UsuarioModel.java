@@ -1,18 +1,16 @@
-package com.example.CadastroDeUsuarios.Usuarios;
+package com.example.CadastroDeUsuarios.usuarios;
 
-import com.example.CadastroDeUsuarios.Tarefas.TarefasModel;
+import com.example.CadastroDeUsuarios.tarefas.TarefasModel;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 
 // Entity ele transforma uma classe em uma entidade do banco de dados
 @Data
 @Entity
 @Table(name = "tb_cadastro")
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class UsuarioModel {
 
     @Id
@@ -49,5 +47,9 @@ public class UsuarioModel {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.CadastroDeUsuarios.Usuarios;
+package com.example.CadastroDeUsuarios.usuarios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

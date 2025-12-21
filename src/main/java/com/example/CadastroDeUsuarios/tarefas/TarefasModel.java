@@ -1,6 +1,6 @@
-package com.example.CadastroDeUsuarios.Tarefas;
+package com.example.CadastroDeUsuarios.tarefas;
 
-import com.example.CadastroDeUsuarios.Usuarios.UsuarioModel;
+import com.example.CadastroDeUsuarios.usuarios.UsuarioModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
