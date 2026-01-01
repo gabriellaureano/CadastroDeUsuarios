@@ -1,5 +1,6 @@
 package com.example.CadastroDeUsuarios.usuarios;
 
+import com.example.CadastroDeUsuarios.exception.UsuarioNaoEncontradoException;
 import com.example.CadastroDeUsuarios.usuarios.dto.UsuarioCreateDTO;
 import com.example.CadastroDeUsuarios.usuarios.dto.UsuarioResponseDTO;
 import com.example.CadastroDeUsuarios.usuarios.dto.UsuarioUpdateDTO;
@@ -40,7 +41,7 @@ public class UsuarioService {
 
     public UsuarioResponseDTO buscarPorId(long id){
         UsuarioModel usuario = usuarioRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Usuario não encontrado") );
+                .orElseThrow(() -> new UsuarioNaoEncontradoException(id));
 
         return new UsuarioResponseDTO(
                 usuario.getId(),
@@ -51,7 +52,7 @@ public class UsuarioService {
 
     public UsuarioUpdateDTO atualizar(long id, UsuarioUpdateDTO usuarioUpdateDTO){
         UsuarioModel usuarioExistente = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+                .orElseThrow(() -> new UsuarioNaoEncontradoException(id));
 
         usuarioExistente.setNome(usuarioUpdateDTO.getNome());
         usuarioExistente.setEmail(usuarioUpdateDTO.getEmail());
@@ -66,7 +67,7 @@ public class UsuarioService {
 
     public void deletar(long id){
         UsuarioModel usuarioExistente = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+                .orElseThrow(() -> new UsuarioNaoEncontradoException(id));
 
         usuarioRepository.delete(usuarioExistente);
     }
